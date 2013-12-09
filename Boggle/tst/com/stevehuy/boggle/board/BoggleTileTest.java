@@ -3,7 +3,6 @@ package com.stevehuy.boggle.board;
 import com.stevehuy.boggle.board.BoggleTile;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class BoggleTileTest {
