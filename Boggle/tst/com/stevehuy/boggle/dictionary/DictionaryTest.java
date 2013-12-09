@@ -1,4 +1,4 @@
-package com.stevehuy.boggle;
+package com.stevehuy.boggle.dictionary;
 
 import static org.junit.Assert.*;
 

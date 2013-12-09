@@ -2,6 +2,8 @@ package com.stevehuy.boggle;
 
 import java.util.Set;
 
+import com.stevehuy.boggle.board.BoggleBoard;
+import com.stevehuy.boggle.board.BoggleBoardFactory;
 import com.stevehuy.dictionary.Dictionary;
 
 public class Launcher {
@@ -11,8 +13,7 @@ public class Launcher {
 	 */
 	public static void main(String[] args) {
 		Dictionary dictionary = new Dictionary();
-		BoggleBoard test = new BoggleBoard();
-		test.testBoardSetUp();
+		BoggleBoard test = BoggleBoardFactory.getTestBoard();
 		Solver solver = new Solver(test, dictionary);
 		Set<String> list = solver.getAllUniqueWords();
 		Integer i=1;
