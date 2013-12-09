@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.stevehuy.dictionary.Dictionary;
+
 
 public class DictionaryTest {
 	Dictionary dictionary;
@@ -56,7 +58,6 @@ public class DictionaryTest {
 	@Test
 	public void testReentry() {
 		String testWord = "REENTRY";
-		//dictionary.add(testWord);
 		assertTrue(dictionary.isPrefix("RE"));
 		assertTrue(dictionary.isPrefix(testWord));
 		assertTrue(dictionary.isWord(testWord));

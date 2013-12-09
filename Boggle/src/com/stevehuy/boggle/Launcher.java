@@ -2,6 +2,8 @@ package com.stevehuy.boggle;
 
 import java.util.Set;
 
+import com.stevehuy.dictionary.Dictionary;
+
 public class Launcher {
 
 	/**

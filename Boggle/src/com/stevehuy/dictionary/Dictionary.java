@@ -1,4 +1,4 @@
-package com.stevehuy.boggle;
+package com.stevehuy.dictionary;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -7,15 +7,15 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Dictionary extends PrefixTreeNode {
-	private static String DICTIONARY_FILE_PATH = "/Users/steve/dictionary";
+	private static String DICTIONARY_FILE_PATH = "data/dictionary";
 	private static Integer MIN_WORD_LENGTH = 3;
 	
 	public Dictionary() {
 		super(null, false);
 		try{
 			
-			System.out.println("Loading dictionary");
 			FileInputStream fstream = new FileInputStream(DICTIONARY_FILE_PATH);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);

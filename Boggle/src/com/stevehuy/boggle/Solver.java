@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.stevehuy.dictionary.Dictionary;
+
 public class Solver {
 	BoggleBoard board;
 	Dictionary dictionary;

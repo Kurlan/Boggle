@@ -1,4 +1,4 @@
-package com.stevehuy.boggle;
+package com.stevehuy.dictionary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
