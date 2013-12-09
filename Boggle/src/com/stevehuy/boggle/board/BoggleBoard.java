@@ -1,6 +1,8 @@
 package com.stevehuy.boggle.board;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class BoggleBoard {
@@ -34,6 +36,16 @@ public class BoggleBoard {
 	
 	public Set<BoggleTile> getNeighbors(int col, int row) {
 		return getNeighbors(get(col, row));
+	}
+	
+	public List<BoggleTile> getAllTiles() {
+		List<BoggleTile> returnList = new LinkedList<BoggleTile>();
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				returnList.add(board[i][j]);
+			}
+		}
+		return returnList;
 	}
 	
 	public Set<BoggleTile> getNeighbors(BoggleTile tile) {
