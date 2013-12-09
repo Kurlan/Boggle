@@ -11,16 +11,16 @@ import com.stevehuy.boggle.solver.Solver;
 import com.stevehuy.dictionary.Dictionary;
 
 public class SolverTest {
-	
+
 	private Solver solver;
 	private BoggleBoard board;
-	
+
 	@Before
 	public void setup() {
 		board = BoggleBoardFactory.getTestBoard();
 		solver = new Solver(board, new Dictionary());
 	}
-	
+
 	@Test
 	public void testInitializer() {
 		List<BogglePlay> plays = solver.initializeSolutions();

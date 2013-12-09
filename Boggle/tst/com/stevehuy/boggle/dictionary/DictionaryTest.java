@@ -9,27 +9,26 @@ import org.junit.Test;
 
 import com.stevehuy.dictionary.Dictionary;
 
-
 public class DictionaryTest {
 	Dictionary dictionary;
-	
+
 	@Before
 	public void setup() {
 		dictionary = new Dictionary();
 	}
-	
+
 	@Test
 	public void testEmptyWordIsNotWord() {
 		assertTrue(dictionary.isWord("") == false);
 	}
-	
+
 	@Test
 	public void testWordExists() {
 		String testWord = "FOOFOOFOO";
 		dictionary.add(testWord);
 		assertTrue(dictionary.isWord(testWord));
 	}
-	
+
 	@Test
 	public void testWordAndSubWord() {
 		String testWord1 = "FOOFOOFOO";
@@ -39,7 +38,7 @@ public class DictionaryTest {
 		assertTrue(dictionary.isWord(testWord1));
 		assertTrue(dictionary.isWord(testWord2));
 	}
-	
+
 	@Test
 	public void testSubWordAndWord() {
 		String testWord1 = "FOO";
@@ -49,14 +48,14 @@ public class DictionaryTest {
 		assertTrue(dictionary.isWord(testWord1));
 		assertTrue(dictionary.isWord(testWord2));
 	}
-	
+
 	@Test
 	public void testWordIsPrefix() {
 		String testWord = "FOOFOOFOO";
 		dictionary.add(testWord);
 		assertTrue(dictionary.isPrefix(testWord));
 	}
-	
+
 	@Test
 	public void testReentry() {
 		String testWord = "REENTRY";
@@ -64,11 +63,11 @@ public class DictionaryTest {
 		assertTrue(dictionary.isPrefix(testWord));
 		assertTrue(dictionary.isWord(testWord));
 	}
-	
+
 	@Test
 	public void testCatPrefix() {
 		String testWord = "CAT";
-		List<String>testWords = dictionary.find(testWord);
+		List<String> testWords = dictionary.find(testWord);
 		assertTrue(dictionary.isPrefix(testWord));
 		assertTrue(dictionary.isWord(testWord));
 		assertTrue(testWords.size() > 0);

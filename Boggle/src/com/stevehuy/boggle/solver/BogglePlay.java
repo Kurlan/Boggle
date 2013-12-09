@@ -48,7 +48,7 @@ public class BogglePlay {
 	public BoggleTile getLast() {
 		return played.get(played.size() - 1);
 	}
-	
+
 	public Set<BoggleTile> removeVisited(Set<BoggleTile> neighbors) {
 		Set<BoggleTile> notVisited = new HashSet<BoggleTile>(neighbors);
 		notVisited.removeAll(visited);

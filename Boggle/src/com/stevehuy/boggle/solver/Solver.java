@@ -11,6 +11,8 @@ import com.stevehuy.dictionary.Dictionary;
 public class Solver {
 	private final BoggleBoard board;
 	private final Dictionary dictionary;
+	private long startTime;
+	private long endTime;
 
 	public Solver(BoggleBoard board, Dictionary dictionary) {
 		this.board = board;
@@ -30,14 +32,16 @@ public class Solver {
 	}
 
 	public List<BogglePlay> solve() {
+		startTimer();
 		LinkedList<BogglePlay> workQueue = initializeSolutions();
 		List<BogglePlay> solutions = new LinkedList<BogglePlay>();
 
 		while (workQueue.peek() != null) {
-			
+
 			BogglePlay play = workQueue.poll();
 			Set<BoggleTile> neighbors = board.getNeighbors(play.getLast());
 			Set<BoggleTile> tilesToCheck = play.removeVisited(neighbors);
+
 			for (BoggleTile tile : tilesToCheck) {
 				BogglePlay newPlay = new BogglePlay(play);
 				newPlay.addBoggleTile(tile);
@@ -49,7 +53,20 @@ public class Solver {
 				}
 			}
 		}
-
+		endTimer();
 		return solutions;
 	}
+
+	public void startTimer() {
+		startTime = System.currentTimeMillis();
+	}
+
+	public void endTimer() {
+		endTime = System.currentTimeMillis();
+	}
+
+	public long getTiming() {
+		return endTime - startTime;
+	}
+
 }
