@@ -3,46 +3,45 @@ package com.stevehuy.dictionary;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Dictionary extends PrefixTreeNode {
 	private static String DICTIONARY_FILE_PATH = "data/dictionary";
 	private static Integer MIN_WORD_LENGTH = 3;
-	
+
 	public Dictionary() {
 		super(null, false);
-		try{
-			
+		try {
 			FileInputStream fstream = new FileInputStream(DICTIONARY_FILE_PATH);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
-			//Read File Line By Line
-			while ((strLine = br.readLine()) != null)   {
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
 				if (strLine.length() >= MIN_WORD_LENGTH) {
 					add(strLine);
 				}
 			}
-			//Close the input stream
+			// Close the input stream
 			in.close();
-			} catch (Exception e){//Catch exception if any
-				System.err.println("Error: " + e.getMessage());
-			}
+		} catch (IOException e) {
+			System.err.println("Error: " + e.getMessage());
+		}
 	}
-	
+
 	public Boolean isWord(String word) {
 		if (word == null || word.equals("")) {
 			return false;
 		}
 		PrefixTreeNode finder = children.get(word.substring(0, 1));
 		int i = 1;
-		
+
 		while (i < word.length()) {
-			finder = finder.children.get(word.substring(i, i+1));
+			finder = finder.children.get(word.substring(i, i + 1));
 			if (finder == null) {
 				return false;
 			}
@@ -50,13 +49,13 @@ public class Dictionary extends PrefixTreeNode {
 		}
 		return finder.terminates;
 	}
-	
+
 	public Boolean isPrefix(String prefix) {
 		PrefixTreeNode finder = children.get(prefix.substring(0, 1));
 		int i = 1;
-		
+
 		while (i < prefix.length()) {
-			finder = finder.children.get(prefix.substring(i, i+1));
+			finder = finder.children.get(prefix.substring(i, i + 1));
 			if (finder == null) {
 				return false;
 			}
@@ -64,14 +63,14 @@ public class Dictionary extends PrefixTreeNode {
 		}
 		return true;
 	}
-	
+
 	public List<String> find(String prefix) {
 		List<String> returnList = new ArrayList<String>();
 		PrefixTreeNode finder = children.get(prefix.substring(0, 1));
 		int i = 1;
-		
+
 		while (i < prefix.length()) {
-			finder = finder.children.get(prefix.substring(i, i+1));
+			finder = finder.children.get(prefix.substring(i, i + 1));
 			if (finder == null) {
 				return returnList;
 			}
@@ -87,5 +86,5 @@ public class Dictionary extends PrefixTreeNode {
 
 		return returnList;
 	}
-	
+
 }

@@ -2,6 +2,8 @@ package com.stevehuy.boggle;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -61,5 +63,14 @@ public class DictionaryTest {
 		assertTrue(dictionary.isPrefix("RE"));
 		assertTrue(dictionary.isPrefix(testWord));
 		assertTrue(dictionary.isWord(testWord));
+	}
+	
+	@Test
+	public void testCatPrefix() {
+		String testWord = "CAT";
+		List<String>testWords = dictionary.find(testWord);
+		assertTrue(dictionary.isPrefix(testWord));
+		assertTrue(dictionary.isWord(testWord));
+		assertTrue(testWords.size() > 0);
 	}
 }
