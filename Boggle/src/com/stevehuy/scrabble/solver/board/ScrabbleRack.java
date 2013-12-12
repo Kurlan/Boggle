@@ -1,13 +1,13 @@
 package com.stevehuy.scrabble.solver.board;
 
-import java.util.List;
+import java.util.Set;
 
 public class ScrabbleRack {
 	public final int size;
-	public final List<ScrabbleTile> tiles;
+	public final Set<ScrabbleTile> tiles;
 	
 	
-	public ScrabbleRack(int size, List<ScrabbleTile> tiles) {
+	public ScrabbleRack(int size, Set<ScrabbleTile> tiles) {
 		this.size = size;
 		this.tiles = tiles;
 	}
@@ -19,5 +19,9 @@ public class ScrabbleRack {
 			builder.append(tile.getValue());
 		}
 		return builder.toString();
+	}
+	
+	public Set<ScrabbleTile> getTiles() {
+		return tiles;
 	}
 }

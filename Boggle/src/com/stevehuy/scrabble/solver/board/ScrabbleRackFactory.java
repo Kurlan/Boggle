@@ -1,14 +1,14 @@
 package com.stevehuy.scrabble.solver.board;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class ScrabbleRackFactory {
 	public static final Integer DEFAULT_SIZE = 7;
 
 	public static ScrabbleRack randomRack() {
-		List<ScrabbleTile> tiles = new ArrayList<ScrabbleTile>();
+		Set<ScrabbleTile> tiles = new HashSet<ScrabbleTile>();
 		
 		for (int i = 0; i < DEFAULT_SIZE; i++) {
 			tiles.add(getRandomTile());
