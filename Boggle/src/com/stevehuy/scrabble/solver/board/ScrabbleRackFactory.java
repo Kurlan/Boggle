@@ -1,16 +1,18 @@
 package com.stevehuy.scrabble.solver.board;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Random;
 import java.util.Set;
 
 public class ScrabbleRackFactory {
 	public static final Integer DEFAULT_SIZE = 7;
 	public static final Map<String, Integer> tileDistribution;
+	private static final String WILD_CARD_CHARACTER = "*";
 	
 	static {
 		tileDistribution = new HashMap<String, Integer>();
@@ -42,22 +44,63 @@ public class ScrabbleRackFactory {
 		tileDistribution.put("X", 1);
 		tileDistribution.put("Q", 1);
 		tileDistribution.put("Z", 1);
+		
+		tileDistribution.put(WILD_CARD_CHARACTER, 2);
 	}
 
-	public static synchronized ScrabbleRack randomRack() {
+	public static ScrabbleRack randomRack() {
 		Set<ScrabbleTile> tiles = new HashSet<ScrabbleTile>();
-		LinkedList<ScrabbleTile> bag = new LinkedList<ScrabbleTile>(getTileBag());
-		
-		Random random = new Random();
-		
+		ArrayList<ScrabbleTile> bag = new ArrayList<ScrabbleTile>(getTileBag());
+		Collections.shuffle(bag);
+
 		for (int i = 0; i < DEFAULT_SIZE; i++) {
-			int index = random.nextInt(bag.size()); 
-			tiles.add(bag.get(index));
-			bag.remove(index);
+			tiles.add(bag.get(i));
 		}
 		ScrabbleRack returnRack = new ScrabbleRack(DEFAULT_SIZE, tiles);
 		
 		return returnRack;
+	}
+	
+	public static ScrabbleRack randomRackWithWildCard() {
+		Set<ScrabbleTile> tiles = new HashSet<ScrabbleTile>();
+		ArrayList<ScrabbleTile> bag = new ArrayList<ScrabbleTile>(getTileBagNoWildCard());
+		Collections.shuffle(bag);
+		for (int i = 0; i < DEFAULT_SIZE - 1; i++) {
+			tiles.add(bag.get(i));
+		}
+		tiles.add(new ScrabbleTile(WILD_CARD_CHARACTER));
+		ScrabbleRack returnRack = new ScrabbleRack(DEFAULT_SIZE, tiles);
+		
+		return returnRack;
+	}
+	
+	public static ScrabbleRack randomRackWithTwoWildCard() {
+		Set<ScrabbleTile> tiles = new HashSet<ScrabbleTile>();
+		ArrayList<ScrabbleTile> bag = new ArrayList<ScrabbleTile>(getTileBagNoWildCard());
+		Collections.shuffle(bag);
+		for (int i = 0; i < DEFAULT_SIZE - 2; i++) {
+			tiles.add(bag.get(i));
+		}
+		tiles.add(new ScrabbleTile(WILD_CARD_CHARACTER));
+		tiles.add(new ScrabbleTile(WILD_CARD_CHARACTER));
+		ScrabbleRack returnRack = new ScrabbleRack(DEFAULT_SIZE, tiles);
+		
+		return returnRack;
+	}
+	
+	private static Set<ScrabbleTile> getTileBagNoWildCard() {
+		Set<ScrabbleTile >tileBag = new HashSet<ScrabbleTile>();
+		
+		for (Entry<String, Integer> keyValue : tileDistribution.entrySet()) {
+			if (!keyValue.getValue().equals(WILD_CARD_CHARACTER)) {
+				for (int i = 0; i < keyValue.getValue(); i++ ) {
+					tileBag.add(new ScrabbleTile(keyValue.getKey()));
+				}
+			}
+		}
+		
+		assert(tileBag.size() == 98);
+		return tileBag;
 	}
 	
 	private static Set<ScrabbleTile> getTileBag() {
@@ -69,7 +112,13 @@ public class ScrabbleRackFactory {
 			}
 		}
 		
-		assert(tileBag.size() == 98);
+		assert(tileBag.size() == 100);
 		return tileBag;
+	}
+	
+	public static List<String> getAllCharacters() {
+		Set<String> allCharacters = tileDistribution.keySet();
+		allCharacters.remove(WILD_CARD_CHARACTER);
+		return new ArrayList<String>(allCharacters);
 	}
 }

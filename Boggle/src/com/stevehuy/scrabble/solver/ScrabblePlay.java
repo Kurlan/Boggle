@@ -40,8 +40,25 @@ public class ScrabblePlay {
 		return builder.toString();
 	}
 	
+	public String toPrettyString() {
+		StringBuilder builder = new StringBuilder();
+		for (ScrabbleTile tile : play) {
+			if (tile.isBlank()) {
+				builder.append(tile.getValue().toLowerCase());
+			} else {
+				builder.append(tile.getValue());
+			}
+		}
+		return builder.toString();
+	}
+	
 	public void addTile(ScrabbleTile tile) {
 		play.add(tile);
+		usedTiles.add(tile);
+	}
+	
+	public void addBlankTile(String value, ScrabbleTile tile) {
+		play.add(new ScrabbleTile(value, true));
 		usedTiles.add(tile);
 	}
 	
@@ -50,7 +67,7 @@ public class ScrabblePlay {
 		returnTiles.removeAll(usedTiles);
 		return returnTiles;
 	}
-
+	
 	public boolean isValidWord() {
 		return dictionary.isWord(toString());
 	}
