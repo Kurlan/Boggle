@@ -11,7 +11,7 @@ import com.stevehuy.scrabble.solver.board.ScrabbleRackFactory;
 public class Launcher {
 
 	public static void main(String[] args) {
-		ScrabbleRack rack = ScrabbleRackFactory.randomRackWithTwoWildCard();
+		ScrabbleRack rack = ScrabbleRackFactory.randomRack();
 		System.out.println(rack);
 		System.out.println("-----");
 		ScrabbleSolver solver = new ScrabbleSolver(rack, new Dictionary());

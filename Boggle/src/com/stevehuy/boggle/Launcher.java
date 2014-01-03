@@ -13,7 +13,7 @@ public class Launcher {
 	// Uses a test board and prints out solutions
 	public static void main(String[] args) {
 		Dictionary dictionary = new Dictionary();
-		BoggleBoard board = BoggleBoardFactory.getTestBoard();
+		BoggleBoard board = BoggleBoardFactory.getRandomBoard();
 		Solver solver = new Solver(board, dictionary);
 		List<BogglePlay> plays = solver.solve();
 
