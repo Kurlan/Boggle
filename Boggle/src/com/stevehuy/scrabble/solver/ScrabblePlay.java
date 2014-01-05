@@ -29,7 +29,7 @@ public class ScrabblePlay {
 		this.dictionary = copy.dictionary;
 		this.play = new ArrayList<ScrabbleTile>(copy.play);
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder(); 
