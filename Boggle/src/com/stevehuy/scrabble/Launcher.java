@@ -2,7 +2,7 @@ package com.stevehuy.scrabble;
 
 import java.util.List;
 
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 import com.stevehuy.scrabble.solver.ScrabblePlay;
 import com.stevehuy.scrabble.solver.ScrabbleSolver;
 import com.stevehuy.scrabble.solver.board.ScrabbleRack;
@@ -14,7 +14,7 @@ public class Launcher {
 		ScrabbleRack rack = ScrabbleRackFactory.randomRack();
 		System.out.println(rack);
 		System.out.println("-----");
-		ScrabbleSolver solver = new ScrabbleSolver(rack, new Dictionary());
+		ScrabbleSolver solver = new ScrabbleSolver(rack, new PrefixDictionary(2));
 		List<ScrabblePlay> solutions = solver.solve();
 		
 		for (ScrabblePlay play: solutions) {

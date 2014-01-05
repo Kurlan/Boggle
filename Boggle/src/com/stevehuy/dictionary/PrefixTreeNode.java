@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class PrefixTreeNode {
-	protected Map<String, PrefixTreeNode> children;
-	protected String keyValue;
+	protected final Map<String, PrefixTreeNode> children;
+	protected final String keyValue;
 	protected Boolean terminates;
 
 	public PrefixTreeNode(String keyValue, Boolean terminates) {
 		this.keyValue = keyValue;
 		this.terminates = terminates;
-		children = new HashMap<String, PrefixTreeNode>();
+		this.children = new HashMap<String, PrefixTreeNode>();
 	}
 
 	public void add(String word) {
@@ -45,6 +45,30 @@ public class PrefixTreeNode {
 		for (String n : children.keySet()) {
 			for (String c : children.get(n).allSuffixes()) {
 				returnList.add(keyValue + c);
+			}
+		}
+
+		return returnList;
+	}
+	
+
+	public List<String> find(String prefix) {
+		List<String> returnList = new ArrayList<String>();
+		PrefixTreeNode finder = children.get(prefix.substring(0, 1));
+		int i = 1;
+
+		while (i < prefix.length()) {
+			finder = finder.children.get(prefix.substring(i, i + 1));
+			if (finder == null) {
+				return returnList;
+			}
+			i++;
+		}
+
+		for (String key : finder.children.keySet()) {
+			List<String> tempList = finder.children.get(key).allSuffixes();
+			for (String t : tempList) {
+				returnList.add(prefix + t);
 			}
 		}
 

@@ -7,17 +7,17 @@ import java.util.Set;
 
 import com.stevehuy.boggle.board.BoggleBoard;
 import com.stevehuy.boggle.board.BoggleTile;
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 
 //  Represents a potential play in boggle
 public class BogglePlay {
 
 	private final BoggleBoard board;
-	private final Dictionary dictionary;
+	private final PrefixDictionary dictionary;
 	private final Set<BoggleTile> visited;
 	private final List<BoggleTile> played;
 
-	public BogglePlay(BoggleBoard board, Dictionary dictionary) {
+	public BogglePlay(BoggleBoard board, PrefixDictionary dictionary) {
 		this.board = board;
 		this.dictionary = dictionary;
 		this.visited = new HashSet<BoggleTile>();

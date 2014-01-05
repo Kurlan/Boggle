@@ -8,7 +8,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 import com.stevehuy.scrabble.solver.board.ScrabbleRack;
 import com.stevehuy.scrabble.solver.board.ScrabbleTile;
 
@@ -30,7 +30,7 @@ public class ScrabblePlayTest {
 		tiles.add(b);
 		tiles.add(c);
 		ScrabbleRack rack = new ScrabbleRack(7, tiles);
-		play = new ScrabblePlay(rack, new HashSet<ScrabbleTile>(), new Dictionary());	
+		play = new ScrabblePlay(rack, new HashSet<ScrabbleTile>(), new PrefixDictionary(2));	
 	}
 		
 	@Test

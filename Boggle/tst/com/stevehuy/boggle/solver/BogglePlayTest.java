@@ -12,13 +12,13 @@ import com.stevehuy.boggle.board.BoggleBoardFactory;
 import com.stevehuy.boggle.board.BoggleTile;
 import com.stevehuy.boggle.board.Point;
 import com.stevehuy.boggle.solver.BogglePlay;
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 
 public class BogglePlayTest {
 
 	private BogglePlay play;
 	private BoggleBoard board;
-	private Dictionary dictionary;
+	private PrefixDictionary dictionary;
 
 	@Before
 	public void setup() {

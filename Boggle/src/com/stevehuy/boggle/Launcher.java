@@ -6,13 +6,13 @@ import com.stevehuy.boggle.board.BoggleBoard;
 import com.stevehuy.boggle.board.BoggleBoardFactory;
 import com.stevehuy.boggle.solver.BogglePlay;
 import com.stevehuy.boggle.solver.Solver;
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 
 public class Launcher {
 
 	// Uses a test board and prints out solutions
 	public static void main(String[] args) {
-		Dictionary dictionary = new Dictionary();
+		PrefixDictionary dictionary = new PrefixDictionary(3);
 		BoggleBoard board = BoggleBoardFactory.getRandomBoard();
 		Solver solver = new Solver(board, dictionary);
 		List<BogglePlay> plays = solver.solve();

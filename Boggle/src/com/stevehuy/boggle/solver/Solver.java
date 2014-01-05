@@ -6,15 +6,15 @@ import java.util.Set;
 
 import com.stevehuy.boggle.board.BoggleBoard;
 import com.stevehuy.boggle.board.BoggleTile;
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 
 public class Solver {
 	private final BoggleBoard board;
-	private final Dictionary dictionary;
+	private final PrefixDictionary dictionary;
 	private long startTime;
 	private long endTime;
 
-	public Solver(BoggleBoard board, Dictionary dictionary) {
+	public Solver(BoggleBoard board, PrefixDictionary dictionary) {
 		this.board = board;
 		this.dictionary = dictionary;
 	}

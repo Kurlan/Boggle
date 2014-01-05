@@ -8,7 +8,7 @@ import org.junit.*;
 import com.stevehuy.boggle.board.BoggleBoard;
 import com.stevehuy.boggle.board.BoggleBoardFactory;
 import com.stevehuy.boggle.solver.Solver;
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 
 public class SolverTest {
 
@@ -18,7 +18,7 @@ public class SolverTest {
 	@Before
 	public void setup() {
 		board = BoggleBoardFactory.getTestBoard();
-		solver = new Solver(board, new Dictionary());
+		solver = new Solver(board, new PrefixDictionary(3));
 	}
 
 	@Test

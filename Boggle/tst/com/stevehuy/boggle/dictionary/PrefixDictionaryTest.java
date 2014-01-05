@@ -7,14 +7,14 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.stevehuy.dictionary.Dictionary;
+import com.stevehuy.dictionary.PrefixDictionary;
 
-public class DictionaryTest {
-	Dictionary dictionary;
+public class PrefixDictionaryTest {
+	PrefixDictionary dictionary;
 
 	@Before
 	public void setup() {
-		dictionary = new Dictionary();
+		dictionary = new PrefixDictionary(3);
 	}
 
 	@Test
